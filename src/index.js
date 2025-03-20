@@ -17,6 +17,8 @@ const articulosRoutes = require("./routes/articulosRoutes");
 const consejosRoutes = require("./routes/consejosRoutes");
 const notificacionesRoutes = require("./routes/notificacionesRoutes");
 const recordatoriosRoutes = require("./routes/recordatoriosRoutes");
+const authRoutes = require("./routes/authRoutes"); // Importa las rutas de autenticación
+
 
 app.use(cors());
 app.use(express.json());
@@ -43,6 +45,8 @@ app.use("/api/articulos", articulosRoutes);
 app.use("/api/consejos", consejosRoutes);
 app.use("/api/notificaciones", notificacionesRoutes);
 app.use("/api/recordatorios", recordatoriosRoutes);
+app.use("/api/auth", authRoutes); // Define la ruta base para la autenticación
+
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
