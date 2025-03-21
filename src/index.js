@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
+//En el frontend gastar React Native i TypeScript. Componentes...
 const app = express();
 const PORT = process.env.PORT || 5000;
 //const de las rutas
@@ -17,7 +18,7 @@ const articulosRoutes = require("./routes/articulosRoutes");
 const consejosRoutes = require("./routes/consejosRoutes");
 const notificacionesRoutes = require("./routes/notificacionesRoutes");
 const recordatoriosRoutes = require("./routes/recordatoriosRoutes");
-const authRoutes = require("./routes/authRoutes"); // Importa las rutas de autenticación
+const authRoutes = require("./routes/authRoutes"); 
 
 
 app.use(cors());

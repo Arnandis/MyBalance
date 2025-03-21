@@ -1,5 +1,8 @@
 const Finanzas = require("../models/Finanzas");
 
+//Repasar que no se elimina, no troba el registre.
+//Iniciem sesio en un usuario i mos dona un token i creem una finanza, tornem a iniciar sesio en el mateix usuari mos dona un altre token, pero si no el
+//cambiem en authentication i esta el vell, se crea igual pq no borrem els anteriors
 // Crear un registro financiero (ingreso o gasto)
 const crearFinanza = async (req, res) => {
     try {

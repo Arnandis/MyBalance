@@ -6,7 +6,7 @@ const finanzasSchema = new mongoose.Schema({
     cantidad: { type: Number, required: true },
     categoria: { 
         type: String, 
-        enum: ["Ocio", "Alquiler", "Compras", "Festivales", "Juegos", "Salario"], 
+        enum: ["Ocio", "Alquiler", "Compras", "Festivales", "Juegos", "Salario", "Otros"], 
         required: true 
     },
     fecha: { type: Date, default: Date.now },

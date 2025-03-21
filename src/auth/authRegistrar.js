@@ -2,6 +2,9 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 
+
+//Crec que no fa falta generar un token quant creem un usuari
+//Pensar una forma de que caduquen els tokens quant pases uns minuts o al ixir de la sesio.
 // Registrar un nuevo usuario
 const registrarUsuario = async (req, res) => {
   try {
