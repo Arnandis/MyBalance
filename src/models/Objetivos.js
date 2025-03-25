@@ -1,6 +1,6 @@
 // src/models/Objetivos.js
 const mongoose = require("mongoose");
-
+//Auth Fet
 const objetivoSchema = new mongoose.Schema({
     usuarioId: {
         type: mongoose.Schema.Types.ObjectId,
@@ -16,8 +16,9 @@ const objetivoSchema = new mongoose.Schema({
         enum: ["Finanzas", "Tiempo", "Personal", "Otros"],
         required: true
     },
+    //repasar lo que significa valor.
     valor: {
-        type: Number, // Puede ser una cantidad de dinero, horas, etc.
+        type: Number, // Puede ser una cantidad de dinero, horas, etc. Mirar de fer float
         required: true
     },
     fechaCreacion: {

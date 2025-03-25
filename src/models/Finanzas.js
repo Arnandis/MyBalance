@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//Auth Fet
 const finanzasSchema = new mongoose.Schema({
     usuarioId: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario", required: true },
     tipo: { type: String, enum: ["ingreso", "gasto"], required: true },

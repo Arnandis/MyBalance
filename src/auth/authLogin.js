@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const Usuario = require('../models/Usuario');
 
 //Tinc que fer que se actualizce el token cada volta que el usuari faxa una consulta o que expire si no. Fer un Log out y que el token de ixe usuari ja no se puga utilitzar.
+//Tinc q fer dos tokens, un refresh i uno el token del usuari.
 // Iniciar sesión (Login)
 const loginUsuario = async (req, res) => {
     try {

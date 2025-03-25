@@ -1,6 +1,6 @@
 // models/Notificacion.js
 const mongoose = require("mongoose");
-
+//Auth Fet
 const notificacionSchema = new mongoose.Schema({
     usuarioId: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },  // Relacionado con el usuario
     contenido: { type: String, required: true },

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//Auth fet
 const tiempoSchema = new mongoose.Schema({
     usuarioId: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario", required: true },
     categoria: { 

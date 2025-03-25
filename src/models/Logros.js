@@ -1,6 +1,6 @@
 // src/models/Logros.js
 const mongoose = require("mongoose");
-
+//Auth Fet
 const logroSchema = new mongoose.Schema({
     usuarioId: {
         type: mongoose.Schema.Types.ObjectId,

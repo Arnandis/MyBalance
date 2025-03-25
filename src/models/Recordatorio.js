@@ -1,6 +1,6 @@
 // models/Recordatorio.js
 const mongoose = require("mongoose");
-
+//Auth Fet
 const recordatorioSchema = new mongoose.Schema({
     usuarioId: { type: mongoose.Schema.Types.ObjectId, ref: 'Usuario', required: true },  // Relacionado con el usuario
     mensaje: { type: String, required: true },
