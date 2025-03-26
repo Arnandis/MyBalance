@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { loginUser } from "../services/api"; // Importa la función desde api.js
-
+import { globalStyles } from "../styles/stylesLogReg";
+//Problemes: el usuari pot registrar un gmail que no te ni @ .com / al iniciar sesio mos redirigis a la pantalla home screen. 
+//Mirar de no repetir codic en els botons.
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -29,11 +31,11 @@ const LoginScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Iniciar Sesión</Text>
+    <View style={globalStyles.container}>
+      <Text style={globalStyles.title}>Iniciar Sesión</Text>
 
       <TextInput
-        style={styles.input}
+        style={globalStyles.input}
         placeholder="Correo electrónico"
         keyboardType="email-address"
         autoCapitalize="none"
@@ -42,63 +44,23 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <TextInput
-        style={styles.input}
+        style={globalStyles.input}
         placeholder="Contraseña"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
       />
 
-      <TouchableOpacity style={styles.button} onPress={handleLogin}>
-        <Text style={styles.buttonText}>Ingresar</Text>
+      <TouchableOpacity style={globalStyles.button} onPress={handleLogin}>
+        <Text style={globalStyles.buttonText}>Ingresar</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={() => navigation.navigate("RegisterScreen")}>
-        <Text style={styles.linkText}>¿No tienes cuenta? Regístrate</Text>
+        <Text style={globalStyles.linkText}>¿No tienes cuenta? Regístrate</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    padding: 20,
-    backgroundColor: "#fff",
-  },
-  title: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 20,
-  },
-  input: {
-    width: "100%",
-    height: 50,
-    borderWidth: 1,
-    borderColor: "#ccc",
-    borderRadius: 8,
-    paddingHorizontal: 10,
-    marginBottom: 10,
-  },
-  button: {
-    width: "100%",
-    height: 50,
-    backgroundColor: "#007bff",
-    justifyContent: "center",
-    alignItems: "center",
-    borderRadius: 8,
-    marginTop: 10,
-  },
-  buttonText: {
-    color: "#fff",
-    fontSize: 18,
-  },
-  linkText: {
-    marginTop: 10,
-    color: "#007bff",
-  },
-});
 
 export default LoginScreen;
