@@ -1,12 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 import { crearFinanza, obtenerFinanzas, actualizarFinanza, eliminarFinanza } from '/home/pau/Escritorio/MyBalance/frontend/src/services/apiFinanzas.js'; // Asumiendo que tus métodos están en este archivo
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const { width } = Dimensions.get('window');
 
-export default function Finanzas({ token }) {
+export default function Finanzas() {
+
+    const [token, setToken] = useState(null);
+
+    useEffect(() => {
+      const getToken = async () => {
+        const storedToken = await AsyncStorage.getItem('token');
+        console.log('Token recuperado:', storedToken);
+        setToken(storedToken);
+      };
+  
+      getToken();
+    }, []);
+
+
   const [ingresos, setIngresos] = useState('');
   const [gastos, setGastos] = useState({
     ocio: 0,
@@ -32,19 +47,32 @@ export default function Finanzas({ token }) {
   };
 
   const handleGuardar = async () => {
-    if (fecha && ingresos) {
+  
+    if (fecha && ingresos && token) {
+      // Verificar que los valores sean numéricos
+      if (isNaN(ingresos) || Object.values(gastos).some(gasto => isNaN(gasto))) {
+        Alert.alert('Error', 'Los valores de ingresos y gastos deben ser numéricos');
+        return;
+      }
+  
       try {
         const data = { ingresos, gastos, fecha };
+        // Asegúrate de que el token se pase correctamente a la función de crear finanza
+        console.log('Enviando datos:', data);
+  
         const finanzaCreada = await crearFinanza(data, token);
         Alert.alert('Éxito', 'Registro guardado correctamente');
       } catch (error) {
+        console.error('Error al guardar registro:', error);
         Alert.alert('Error', 'Hubo un problema al guardar el registro');
       }
     } else {
+      console.log('Campos incompletos');
       Alert.alert('Error', 'Por favor complete todos los campos');
     }
   };
-
+  
+  
   const handleLeer = async () => {
     if (fecha) {
       try {
