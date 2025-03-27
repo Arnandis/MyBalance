@@ -1,5 +1,5 @@
 const API_URL = 'http://192.168.99.100:5000/api';  // Asegúrate de cambiarlo si es necesario
-
+//Api frontend para hacer las consultas al backend de login y registro. 
 // Función para iniciar sesión
 export const loginUser = async (email, password) => {
   try {

@@ -5,6 +5,8 @@ import LoginScreen from "./screens/LoginScreen";
 import RegisterScreen from "./screens/RegisterScreen";  // Importa la pantalla de registro
 import HomeScreen from "./screens/HomeScreen";
 import FinanzasScreen from "./screens/FinanzasScreen";
+import PerfilScreen from "./screens/PerfilScreen";
+import TiempoScreen from "./screens/TiempoScreen";
 
 const Stack = createStackNavigator();
 //pasar la navegacio a la carpeta navigation en un archiu apart.
@@ -32,6 +34,16 @@ export default function App() {
         <Stack.Screen
           name="FinanzasScreen"
           component={FinanzasScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="PerfilScreen"
+          component={PerfilScreen}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="TiempoScreen"
+          component={TiempoScreen}
           options={{ headerShown: false }}
         />
       </Stack.Navigator>

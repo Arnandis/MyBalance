@@ -1,5 +1,4 @@
 import axios from 'axios';
-//mirar pq me dona error: (NOBRIDGE) ERROR  Error al crear finanza [AxiosError: Request failed with status code 403]
 //soles funciona el metodo de guardar, mirar de fer una pagina en la que estiguen tots els grafics de un usuari.
 // URL correcta de la API de Finanzas
 const API_URL = 'http://192.168.99.100:5000/api/finanzas';

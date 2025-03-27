@@ -4,9 +4,10 @@ import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
 import { crearFinanza, obtenerFinanzas, actualizarFinanza, eliminarFinanza } from '/home/pau/Escritorio/MyBalance/frontend/src/services/apiFinanzas.js'; // Asumiendo que tus métodos están en este archivo
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from '../components/Header';
 
 const { width } = Dimensions.get('window');
-
+//Mirar de organitzar millor el proyecte, que finanzasScreen no siga tan llarg que soles tinga la logica de interfaz.
 export default function Finanzas() {
 
     const [token, setToken] = useState(null);
@@ -50,7 +51,7 @@ export default function Finanzas() {
   
     if (fecha && ingresos && token) {
       // Verificar que los valores sean numéricos
-      if (isNaN(ingresos) || Object.values(gastos).some(gasto => isNaN(gasto))) {
+      if (isNaN(ingresos) || Object.values(gastos).some(gasto => isNaN(gasto))) { //isNaN es que no nia numero, ni un 0.
         Alert.alert('Error', 'Los valores de ingresos y gastos deben ser numéricos');
         return;
       }
@@ -131,7 +132,7 @@ export default function Finanzas() {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Finanzas</Text>
+      <Header title="Finanzas"/>
 
       <TextInput style={styles.input} placeholder="Ingrese la fecha (YYYY-MM-DD)" value={fecha} onChangeText={handleFechaChange} />
       <TextInput style={styles.input} placeholder="Ingrese sus ingresos" keyboardType="numeric" value={ingresos} onChangeText={handleIngresosChange} />
@@ -180,7 +181,6 @@ export default function Finanzas() {
 
 const styles = StyleSheet.create({
   container: { flexGrow: 1, alignItems: 'center', justifyContent: 'flex-start', padding: 20 },
-  title: { fontSize: 30, fontWeight: 'bold', marginBottom: 20 },
   subtitle: { fontSize: 20, marginVertical: 10 },
   input: { width: '100%', padding: 10, marginVertical: 10, borderWidth: 1, borderRadius: 10, borderColor: '#ddd' },
   chartTitle: { fontSize: 18, marginVertical: 10 },
