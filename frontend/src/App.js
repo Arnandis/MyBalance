@@ -9,7 +9,7 @@ import PerfilScreen from "./screens/PerfilScreen";
 import TiempoScreen from "./screens/TiempoScreen";
 
 const Stack = createStackNavigator();
-//pasar la navegacio a la carpeta navigation en un archiu apart.
+//Mirar de gastar docker q ajuda en les dependencies si estic en varios ordenaors treballant.
 //fer una pantalla inicial en uns iconos grans que te duguen a finanzas tiempo... y te de la bienvenida
 //pensar en fer un apartat que pose mis graficos, ahi ya esta tota la informacio dels grafics que ha anat fent y que puga buscar per dia, categoria...
 export default function App() {

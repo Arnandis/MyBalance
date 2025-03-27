@@ -22,6 +22,7 @@ const tiempoSchema = new mongoose.Schema({
   deporte: { type: Number, default: 0 },
   familia: { type: Number, default: 0 },
   otros: { type: Number, default: 0 },
-}, { timestamps: true });
+  //fecha: { type: Date, required: true },  // Fecha personalizada elegida por el usuario
+}, { timestamps: true }); //true si vols q aparega la fecha en la q se ha creat el grafic.
 
 module.exports = mongoose.model("Tiempo", tiempoSchema);

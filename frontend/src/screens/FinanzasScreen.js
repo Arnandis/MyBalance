@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 'react-native';
 import { LineChart } from 'react-native-chart-kit';
 import { Dimensions } from 'react-native';
-import { crearFinanza, obtenerFinanzas, actualizarFinanza, eliminarFinanza } from '/home/pau/Escritorio/MyBalance/frontend/src/services/apiFinanzas.js'; // Asumiendo que tus métodos están en este archivo
+import { crearFinanza, obtenerFinanzas, actualizarFinanza, eliminarFinanza } from '/home/pau/Escritorio/MyBalance/frontend/src/services/apiFinanzas.js'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Header from '../components/Header';
 

@@ -22,7 +22,7 @@ const loginUsuario = async (req, res) => {
   
       // Crear y firmar el token. fer que expire en 15 min y que se vaxa actualitzant
       const token = jwt.sign({ id: usuario._id }, process.env.JWT_SECRET, {
-        expiresIn: '30d',
+        expiresIn: '1d',
       });
   
       res.json({

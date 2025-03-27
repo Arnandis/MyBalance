@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity, Alert } from "react-native";
+import { View, Text, TextInput, StyleSheet, Dimensions, TouchableOpacity, Alert, ScrollView } from "react-native";
 import { PieChart } from "react-native-chart-kit";
 import { saveTiempoData } from "../services/apiTiempo"; // Usar la función adecuada para guardar los datos
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Header from '../components/Header';
 
 const { width } = Dimensions.get("window");
 
@@ -66,39 +67,43 @@ export default function Tiempo() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Distribución del tiempo</Text>
-      <View style={styles.inputContainer}>
-        {Object.keys(timeData).map((category) => (
-          <TextInput
-            key={category}
-            style={styles.input}
-            placeholder={`Minutos de ${category}`}
-            keyboardType="numeric"
-            value={String(timeData[category])}
-            onChangeText={(value) => handleInputChange(category, value)}
+      <Header title="Tiempo"/>
+
+      <ScrollView style={styles.scrollContainer}>
+        <Text style={styles.title}>Distribución del tiempo</Text>
+        <View style={styles.inputContainer}>
+          {Object.keys(timeData).map((category) => (
+            <TextInput
+              key={category}
+              style={styles.input}
+              placeholder={`Minutos de ${category}`}
+              keyboardType="numeric"
+              value={String(timeData[category])}
+              onChangeText={(value) => handleInputChange(category, value)}
+            />
+          ))}
+        </View>
+        <TouchableOpacity style={styles.button} onPress={guardarDatos}>
+          <Text style={styles.buttonText}>Guardar datos</Text>
+        </TouchableOpacity>
+        {totalTime > 0 && (
+          <PieChart
+            data={chartData}
+            width={width - 30}
+            height={220}
+            chartConfig={{
+              backgroundColor: "#1cc910",
+              backgroundGradientFrom: "#eff3ff",
+              backgroundGradientTo: "#ffffff",
+              decimalPlaces: 0,
+              color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
+            }}
+            accessor="population"
+            backgroundColor="transparent"
+            paddingLeft="15"
           />
-        ))}
-      </View>
-      <TouchableOpacity style={styles.button} onPress={guardarDatos}>
-        <Text style={styles.buttonText}>Guardar datos</Text>
-      </TouchableOpacity>
-      {totalTime > 0 && (
-        <PieChart
-          data={chartData}
-          width={width - 30}
-          height={220}
-          chartConfig={{
-            backgroundColor: "#1cc910",
-            backgroundGradientFrom: "#eff3ff",
-            backgroundGradientTo: "#ffffff",
-            decimalPlaces: 0,
-            color: (opacity = 1) => `rgba(0, 0, 0, ${opacity})`,
-          }}
-          accessor="population"
-          backgroundColor="transparent"
-          paddingLeft="15"
-        />
-      )}
+        )}
+      </ScrollView>
     </View>
   );
 }
@@ -106,9 +111,11 @@ export default function Tiempo() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     backgroundColor: "#f1f1f1",
+  },
+  scrollContainer: {
+    flex: 1,
+    paddingTop:70,
     padding: 20,
   },
   title: {
