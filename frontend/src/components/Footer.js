@@ -1,1 +1,0 @@
-//Tindra el header i footer i este sera el que cridem en les pantalles principals.

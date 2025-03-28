@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+//Mirar de que els numeros no puguen ser negatius i que la fecha tigna bon format.
 // Ajustamos el esquema para aceptar un objeto de gastos con múltiples categorías
 const finanzasSchema = new mongoose.Schema({
   usuarioId: { type: mongoose.Schema.Types.ObjectId, ref: "Usuario", required: true },

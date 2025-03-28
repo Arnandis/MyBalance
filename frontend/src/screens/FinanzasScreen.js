@@ -8,6 +8,7 @@ import Header from '../components/Header';
 
 const { width } = Dimensions.get('window');
 //Mirar de organitzar millor el proyecte, que finanzasScreen no siga tan llarg que soles tinga la logica de interfaz.
+//posar una expresio regular per a controlar que el usuari pase be el format.
 export default function Finanzas() {
 
     const [token, setToken] = useState(null);
@@ -133,7 +134,7 @@ export default function Finanzas() {
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Header title="Finanzas"/>
-
+      
       <TextInput style={styles.input} placeholder="Ingrese la fecha (YYYY-MM-DD)" value={fecha} onChangeText={handleFechaChange} />
       <TextInput style={styles.input} placeholder="Ingrese sus ingresos" keyboardType="numeric" value={ingresos} onChangeText={handleIngresosChange} />
 
